@@ -10,15 +10,16 @@ namespace ObedinitVOdnyKollekciu
             string[] characterStringSecond = new string[0];
             List<string> characters = new List<string>();
 
-            characterStringFirst = CreateArray(characterStringFirst);
-            CreateCollection(characters, characterStringFirst);
-            characterStringSecond = CreateArray(characterStringSecond);
-            CreateCollection(characters, characterStringSecond);
+            characterStringFirst = CreateArray();
+            AddUniqueValuesCollection(characters, characterStringFirst);
+            characterStringSecond = CreateArray();
+            AddUniqueValuesCollection(characters, characterStringSecond);
             WriteCollection(characters);
         }
 
-        static string[] CreateArray(string[] characterString)
+        static string[] CreateArray()
         {
+            string[] characterString = new string[0];
             string userInput;
             char whitespace = ' ';
 
@@ -29,20 +30,12 @@ namespace ObedinitVOdnyKollekciu
             return characterString;
         }
 
-        static void CreateCollection(List<string> characters, string[] characterString)
+        static void AddUniqueValuesCollection(List<string> characters, string[] characterString)
         {
             for (int i = 0; i < characterString.Length; i++)
             {
-                bool isReplay = false;
-
-                for (int j = 0; j < characters.Count; j++)
-                {
-                    if (characters[j] == characterString[i])
-                        isReplay = true;
-                }
-
-                if (isReplay == false)
-                    characters.Add(characterString[i]);
+                if(characters.Contains(characterString[i])==false)
+                    characters.Add(characterString[i]);            
             }
         }
 
