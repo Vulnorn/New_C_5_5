@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace ObedinitVOdnyKollekciu
 {
@@ -33,17 +31,14 @@ namespace ObedinitVOdnyKollekciu
 
         static void CreateCollection(List<string> characters, string[] characterString)
         {
-            bool isReplay = false;
-
             for (int i = 0; i < characterString.Length; i++)
             {
-                if (characters.Count != 0)
+                bool isReplay = false;
+
+                for (int j = 0; j < characters.Count; j++)
                 {
-                    for (int j = 0; j < characters.Count; j++)
-                    {
-                        if (characters[i] == characterString[j])
-                            isReplay = true;
-                    }
+                    if (characters[j] == characterString[i])
+                        isReplay = true;
                 }
 
                 if (isReplay == false)
